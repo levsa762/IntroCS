@@ -24,12 +24,10 @@ int main(){
     cin >> gender;
 
     // checking gender and init his string
-    if (gender == 'M')
-    {
+    if (gender == 'M'){
         gender_string = "Male";
     }
-    else if (gender ==  'F')
-    {
+    else if (gender ==  'F'){
         gender_string = "Female" ;
     }
     else{

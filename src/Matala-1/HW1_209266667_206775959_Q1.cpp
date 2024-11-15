@@ -1,28 +1,44 @@
-//
-// Created by Aviv Raz on 13/11/2024.
-//
+// Name: Lev Sakaju; ID: 209266667
+// Name: Aviv Raz; ID: 206775959
 
 #include <iostream>
 using namespace std;
 
-int birthYear, id, height;
-int currentYear = 2024;
-char gender;
+int main(){
+    // define consts
+    int birthYear, idNumber, height, age;
+    char gender;
+    string gender_string;
+    const int CURRENT_YEAR =  2024;
 
-int main()
-{
-    cout << "Your birthday year is: ";
+    // getting input from user
+    cout << "Please enter your birth year" << endl;
     cin >> birthYear;
-    cout << "Your ID is: ";
-    cin >> id;
-    cout << "Your height is: ";
+    cout << "Please enter your id number" << endl;
+    cin >> idNumber;
+    cout << "Please enter your height in cm " << endl;
     cin >> height;
-    cout << "Your gender is (F or M): ";
+    cout << "Please enter your gender (M or F)" << endl;
     cin >> gender;
 
-    cout << "Your age is: " << (currentYear - birthYear) << endl;
-    cout << "Your ID is: " << id << endl;
-    cout << "Your height is: " << height << endl;
-    cout << "Your gender is: " << gender;
+    // checking gender and init his string
+    if (gender == 'M'){
+        gender_string = "Male";
+    }
+    else if (gender ==  'F'){
+        gender_string = "Female" ;
+    }
+    else{
+        cout << "You entered wrong char";
+        return 1;
+    }
+
+    // calculate age
+    age = CURRENT_YEAR - birthYear;
+
+    // printing results
+    cout << "You are " << age << " years old and your id number is " << idNumber << endl;
+    cout << "Your height is " << height << " cm and your gender is " << gender_string;
+
     return 0;
 }

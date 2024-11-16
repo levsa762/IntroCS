@@ -6,24 +6,24 @@ using namespace std;
 
 int main(){
     // define consts
-    const float cab_starting_price = 12.3;
-    const float price_for_one_km = 2.70;
-    const float price_for_one_bag = 5.00;
+    const float CAB_STARTING_PRICE = 12.3;
+    const float PRICE_FOR_ONE_KM = 2.70;
+    const float PRICE_FOR_ONE_BAG = 5.00;
 
     // define variables for input
-    float path_in_km, number_of_bags, total_price;
+    float pathInKm, numberOfBags, totalPrice;
 
     // getting input from user
     cout << "Please enter how long is your path in KM" << endl;
-    cin >> path_in_km;
+    cin >> pathInKm;
     cout << "Please enter how many bags do you have" << endl;
-    cin >> number_of_bags;
+    cin >> numberOfBags;
 
     // calculate the total price according to the conditions.
-    total_price = cab_starting_price + path_in_km * price_for_one_km + number_of_bags * price_for_one_bag;
+    totalPrice = CAB_STARTING_PRICE + pathInKm * PRICE_FOR_ONE_KM + numberOfBags * PRICE_FOR_ONE_BAG;
 
     // printing the results in NIS
-    cout << "The total price for taxi is: " << total_price << " NIS";
+    cout << "The total price for taxi is: " << totalPrice << " NIS";
 
     return 0;
 }

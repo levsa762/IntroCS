@@ -8,7 +8,7 @@ int main(){
     // define consts
     int birthYear, idNumber, height, age;
     char gender;
-    string gender_string;
+    string genderString;
     const int CURRENT_YEAR =  2024;
 
     // getting input from user
@@ -23,10 +23,10 @@ int main(){
 
     // checking gender and init his string
     if (gender == 'M'){
-        gender_string = "Male";
+        genderString = "Male";
     }
     else if (gender ==  'F'){
-        gender_string = "Female" ;
+        genderString = "Female" ;
     }
     else{
         cout << "You entered wrong char";
@@ -38,7 +38,7 @@ int main(){
 
     // printing results
     cout << "You are " << age << " years old and your id number is " << idNumber << endl;
-    cout << "Your height is " << height << " cm and your gender is " << gender_string;
+    cout << "Your height is " << height << " cm and your gender is " << genderString;
 
     return 0;
 }

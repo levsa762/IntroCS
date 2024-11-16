@@ -8,7 +8,6 @@ int main(){
     // define consts
     int birthYear, idNumber, height, age;
     char gender;
-    string genderString;
     const int CURRENT_YEAR =  2024;
 
     // getting input from user
@@ -21,24 +20,12 @@ int main(){
     cout << "Please enter your gender (M or F)" << endl;
     cin >> gender;
 
-    // checking gender and init his string
-    if (gender == 'M'){
-        genderString = "Male";
-    }
-    else if (gender ==  'F'){
-        genderString = "Female" ;
-    }
-    else{
-        cout << "You entered wrong char";
-        return 1;
-    }
-
     // calculate age
     age = CURRENT_YEAR - birthYear;
 
     // printing results
     cout << "You are " << age << " years old and your id number is " << idNumber << endl;
-    cout << "Your height is " << height << " cm and your gender is " << genderString;
+    cout << "Your height is " << height << " cm and your gender is " << gender;
 
     return 0;
 }

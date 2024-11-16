@@ -1,17 +1,14 @@
-#include <iostream>
+// Name: Lev Sakaju; ID: 209266667
+// Name: Aviv Raz; ID: 206775959
 
+#include <iostream>
 using namespace std;
 
 int main(){
+    // initialize variables
+    int num, hundreds, tens, units, sum;
 
-    // Initialize variables
-    int num;
-    int hundreds;
-    int tens;
-    int units;
-    int sum;
-
-    //getting input from user
+    // getting input from user
     cout << "Please enter three digit number" << endl;
     cin >> num;
 
@@ -26,9 +23,9 @@ int main(){
     // reverse the number
     num = units*100 + tens*10 + hundreds;
 
-    //printing results
-    cout << "The reversed number is " << num << endl;
-    cout << "The sum of the digits is " << sum;
-    
+    // printing results
+    cout << "The reversed number is: " << num << endl;
+    cout << "The sum of the digits is: " << sum;
+
     return 0;
 }

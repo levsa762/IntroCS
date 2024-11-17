@@ -5,10 +5,11 @@
 using namespace std;
 
 int main(){
-    // define consts
+    // define variables
     int birthYear, idNumber, height, age;
     char gender;
-    const int CURRENT_YEAR =  2024;
+    int currentYear;
+    currentYear =  2024; // This is because we can't use consts
 
     // getting input from user
     cout << "Please enter your birth year" << endl;
@@ -21,7 +22,7 @@ int main(){
     cin >> gender;
 
     // calculate age
-    age = CURRENT_YEAR - birthYear;
+    age = currentYear - birthYear;
 
     // printing results
     cout << "You are " << age << " years old and your id number is " << idNumber << endl;

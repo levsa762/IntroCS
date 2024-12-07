@@ -27,7 +27,7 @@ int main(){
 
             cout << "Please enter a celcius number" << endl;
             cin >> cNum;
-
+            //calculation from celcius to farneheit
             fNum = cNum * 9 / 5 + 32;
             cout << "The fahrenheit number is: " << fNum << endl;
         }
@@ -36,13 +36,13 @@ int main(){
 
             cout << "Please enter a fahrenheit number" << endl;
             cin >> fNum;
-
+            ////calculation from celcius to farneheit
             cNum = (fNum - 32) * 5 / 9;
             cout << "The celcius number is: " << cNum << endl;
         }
         else if (optionNum == 3) {
             int seconds, calSeconds, calMinutes, calHours;
-
+            // convert total seconds to seconds hour and minutes
             cout << "Please enter seconds number" << endl;
             cin >> seconds;
 
@@ -55,7 +55,7 @@ int main(){
         }
         else if (optionNum == 4) {
             int calSeconds, seconds, minutes, hours;
-
+            // like 3 but in the other way - calculate to total seconds
             cout << "Please enter hours number" << endl;
             cin >> hours;
             cout << "Please enter minutes number" << endl;
@@ -70,7 +70,7 @@ int main(){
             int decimalNum, binaryNum = 0, place = 1;
             cout << "Please enter decimal number" << endl;
             cin >> decimalNum;
-
+            // convert decimal to binary by the result of %2 every time becuase binary is base 2
             while (decimalNum > 0) {
                 int remainder = decimalNum % 2;
                 binaryNum = binaryNum + remainder * place;
@@ -80,6 +80,7 @@ int main(){
 
             cout << "The binary number is: " << binaryNum << endl;
         }
+        // convert to decimal from binary with the base 2 method
         else if (optionNum == 6) {
             int binaryNum, decimalNum = 0, exponent = 0;
             cout << "Please enter binary number" << endl;
@@ -107,7 +108,7 @@ int main(){
 
             cout << "Please enter a character between '0' - '9'" << endl;
             cin >> character;
-
+            // convert char to int by minus asci of '0' then printing
             while ((character != 'e') && (character != 'E')) {
                 num = num * 10 + (character - '0');
 

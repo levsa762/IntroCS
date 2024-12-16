@@ -4,13 +4,13 @@ using namespace std;
 
 #define SIZE 10
 
-int FirstIndexOfNumberShownMultiple(int arr[SIZE] , int size , int value){
+int FirstIndexOfNumberShownMultiple(int arr[SIZE] , int size , int value , int indexl){
     int counter = 0;
     int index = 0;
     int temparr[SIZE] = {};
     int indextemp = 0;
 
-    for (int i = 0; i < size; i++)
+    for (int i = 0; i < indexl+1; i++)
     {
         if (arr[i] == value)
         {
@@ -34,47 +34,35 @@ int countIterationOfCurledArray(int arr[SIZE], int size){
     int number = 0;
     int firstIndex = 0;
     int index = 0;
-    int tempArray[SIZE] = {};
+    int tempArray[SIZE] = {0};
     int i = 0;
+    /*
     for (int i = 0; i < size; i++) {
         tempArray[i] = arr[i];
     }
-
+    */
     while (i < size )
     {
-        //cout << " " << i;
-        firstIndex = FirstIndexOfNumberShownMultiple(tempArray,size,tempArray[i]);
-        cout << " " << i << "-" << tempArray[i];
         
-        if (firstIndex != -1 && isChanged == false)
+        if(tempArray[i]==0)
         {
-            isChanged = true;
-            number = tempArray[i];
-            index = firstIndex;
-            if (index >= i)
-            {
-                i++;
-            }
-            else{
-                i = index;
-            }
-            
+            tempArray[i] = arr[i];
         }
-        else if(isChanged == true && tempArray[i] == number && index != i)
+        cout << " " << i ;
+        firstIndex = FirstIndexOfNumberShownMultiple(tempArray,size,tempArray[i], i);
+        if (firstIndex != -1)
         {
+            //number = tempArray[i];
+            index = firstIndex;
             i=index;
             tempArray[i] = tempArray[i] +1;
-            isChanged = false;
-
         }
+
         else{
-                i++;
+               i++;
             }
-        
-        counter++;
-
-        
-
+            
+            counter++;
     }
     cout << endl;
     for (int i = 0; i < size; i++)
@@ -97,8 +85,8 @@ int countIterationOfCurledArray(int arr[SIZE], int size){
 
 int main(){
 
-    int arry[SIZE] = {1,11,4,5,2,9,4,12,17,6};
-   // int arry[SIZE] = {1,3,4,5,6,5,3,17,6,10};
+    //int arry[SIZE] = {1,11,4,5,2,9,4,12,17,6};
+   int arry[SIZE] = {1,3,4,5,6,5,3,17,6,10};
     //{1,9,4,8,7,5,3,17,6,10};
 
     cout << endl << countIterationOfCurledArray(arry , SIZE);

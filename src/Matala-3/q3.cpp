@@ -4,7 +4,10 @@ using namespace std;
 
 #define SIZE 10
 
-int FirstIndexOfNumberShownMultiple(int arr[SIZE] , int size , int value , int indexl){
+/* function that finds if value is in array more then once(looping until index equals index of the value) and returns the first index of the value if it 
+true , if not it will return -1
+*/
+int FirstIndexOfNumberShownMultiple(int arr[] , int size , int value , int indexl){
     int counter = 0;
     int index = 0;
     int temparr[SIZE] = {};
@@ -27,34 +30,29 @@ int FirstIndexOfNumberShownMultiple(int arr[SIZE] , int size , int value , int i
 }
 
 
-
-int countIterationOfCurledArray(int arr[SIZE], int size){
+/* function that looping through an array and make it curly(each value of cell is differet from each other)
+we are looping through the tempArray and every time "add" value to him, it checks with side fucntion if value in the temp array has at least duplication , if yes it jumps to the index
+up the value by one and keep doing it untill the temp array is curly, the fucntion returns a counter that counts the number of cells he "jumped"
+*/
+int countIterationOfCurledArray(int arr[], int size){
     int counter = 0;
-    bool isChanged = false;
     int number = 0;
     int firstIndex = 0;
     int index = 0;
     int tempArray[SIZE] = {0};
     int i = 0;
-    /*
-    for (int i = 0; i < size; i++) {
-        tempArray[i] = arr[i];
-    }
-    */
-    while (i < size )
-    {
-        
-        if(tempArray[i]==0)
-        {
+
+    while (i < size ){
+
+        if(tempArray[i]==0){
             tempArray[i] = arr[i];
         }
+
         cout << " " << i ;
         firstIndex = FirstIndexOfNumberShownMultiple(tempArray,size,tempArray[i], i);
-        if (firstIndex != -1)
-        {
-            //number = tempArray[i];
-            index = firstIndex;
-            i=index;
+        
+        if (firstIndex != -1){
+            i=firstIndex;
             tempArray[i] = tempArray[i] +1;
         }
 
@@ -62,7 +60,7 @@ int countIterationOfCurledArray(int arr[SIZE], int size){
                i++;
             }
             
-            counter++;
+        counter++;
     }
     cout << endl;
     for (int i = 0; i < size; i++)
@@ -85,8 +83,8 @@ int countIterationOfCurledArray(int arr[SIZE], int size){
 
 int main(){
 
-    //int arry[SIZE] = {1,11,4,5,2,9,4,12,17,6};
-   int arry[SIZE] = {1,3,4,5,6,5,3,17,6,10};
+    int arry[SIZE] = {1,11,4,5,2,9,4,12,17,6};
+   //int arry[SIZE] = {1,3,4,5,6,5,3,17,6,10};
     //{1,9,4,8,7,5,3,17,6,10};
 
     cout << endl << countIterationOfCurledArray(arry , SIZE);

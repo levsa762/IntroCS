@@ -7,6 +7,7 @@ using namespace std;
 /* function that finds if value is in array more then once(looping until index equals index of the value) and returns the first index of the value if it 
 true , if not it will return -1
 */
+
 int FirstIndexOfNumberShownMultiple(int arr[] , int size , int value , int indexl){
     int counter = 0;
     int index = 0;

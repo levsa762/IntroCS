@@ -82,9 +82,11 @@ int countIterationOfCurledArray(int arr[], int size){
 
 int main(){
 
+    // arrays for check:
+    //{1,9,4,8,7,5,3,17,6,10};
     //int arry[SIZE] = {1,11,4,5,2,9,4,12,17,6};
    int arry[SIZE] = {1,3,4,5,6,5,3,17,6,10};
-    //{1,9,4,8,7,5,3,17,6,10};
+
 
     cout << endl << countIterationOfCurledArray(arry , SIZE);
     

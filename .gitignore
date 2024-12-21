@@ -13,6 +13,7 @@
 *.a
 *.lib
 *.exe
+*.DS_Store
 
 # Ignore CMake generated files
 CMakeFiles/

@@ -35,7 +35,6 @@ int maxDigits(int number){
 // function that gets number that equals to nis number(shekel) and convert him to USD with cast value of 0.27 per 1 shekel
 double nisToUsd(double number){
     return number*CASTVALUE;
-
 }
 
 
@@ -53,26 +52,26 @@ bool isDigInNum(int dig, int num){
     return false;
     
 }
-
+// function that gets two numbers and and return new num that contains the shared digits
 int sameDigits(int num1, int num2){
-    int sum = 0;
+    int sharedNum = 0;
     int mul = 1;
     while (num1 != 0)
     {
-        if (isDigInNum(num1 % 10 , num2) && !(isDigInNum(num1 % 10, sum)))
+        if (isDigInNum(num1 % 10 , num2) && !(isDigInNum(num1 % 10, sharedNum)))
         {
-            sum = sum + (num1 % 10)*mul;
+            sharedNum = sharedNum + (num1 % 10)*mul;
             mul *= 10;
         }
         num1 /= 10;
     }
 
-    if (sum == 0)
+    if (sharedNum == 0)
     {
         return -1;
     }
     else{
-        return sum;
+        return sharedNum;
     }
     
     
@@ -87,5 +86,5 @@ int main(){
     cout << nisToUsd(18) << endl;
 
     //finds the same digits between two numbers
-    cout << sameDigits(163466 ,463);
+    cout << sameDigits(12345 ,3265);
 }

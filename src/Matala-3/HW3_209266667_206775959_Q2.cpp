@@ -33,10 +33,8 @@ void longestSection(int A[], int size){
                 maxIndex = index;
                 
             }
-            if (i != (size -1))
-            {
-                index = i +1;
-            }
+
+            index = i + 1;
             counter =0;
         }
     }
@@ -67,7 +65,7 @@ int main(){
     cout << endl;
     longestSection(arr, N);
     // for run , just copy and paste this
-    // 1 -4 5 6 7 0 -8 0 1 0 9 -100 -99 -1 5 67 2 1 15
+    // 1 -4 5 6 7 0 -8 0 1 0 9 -100 -99 -1 5 67 2 1 -15
     // -1 -4 -5 -6 -7 -1 -8 -1 -1 -1 -9 -100 -99 -1 -5 -67 -2 -1 -15
 }
 

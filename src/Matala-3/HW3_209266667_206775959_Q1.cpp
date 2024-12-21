@@ -14,10 +14,7 @@ using namespace std;
 int maxDigits(int number){
     int digit ;
     int maxDig = 0;
-    if(number < 9 && number > 0){
-        return number;
-    }
-
+    
     while (number!=0)
     {
         

@@ -10,24 +10,18 @@ using namespace std;
 true , if not it will return -1
 */
 
-int FirstIndexOfNumberShownMultiple(int arr[] , int size , int value , int indexl){
+int FirstIndexOfNumberShownMultiple(int arr[] , int size , int indexl){
     int counter = 0;
     int index = 0;
     int temparr[SIZE] = {};
     int indextemp = 0;
 
-    for (int i = 0; i < indexl+1; i++)
+    for (int i = 0; i < indexl; i++)
     {
-        if (arr[i] == value)
+        if (arr[i] == arr[indexl])
         {
-            counter++;
-            temparr[indextemp] = i;
-            indextemp++;
+            return i;
         } 
-    }
-    if (counter > 1)
-    {
-        return temparr[0];
     }
     return -1;
 }
@@ -52,7 +46,7 @@ int countIterationOfCurledArray(int arr[], int size){
         }
 
         //optional to print indexes  - cout << " " << i ;
-        firstIndex = FirstIndexOfNumberShownMultiple(tempArray,size,tempArray[i], i);
+        firstIndex = FirstIndexOfNumberShownMultiple(tempArray,size, i);
         
         if (firstIndex != -1){
             i=firstIndex;

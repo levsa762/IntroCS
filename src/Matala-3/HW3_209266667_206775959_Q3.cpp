@@ -42,7 +42,7 @@ int countIterationOfCurledArray(int arr[], int size){
     int number = 0;
     int firstIndex = 0;
     int index = 0;
-    int tempArray[SIZE] = {0};
+    int tempArray[SIZE] = {};
     int i = 0;
 
     while (i < size ){
@@ -51,7 +51,7 @@ int countIterationOfCurledArray(int arr[], int size){
             tempArray[i] = arr[i];
         }
 
-        cout << " " << i ;
+        //optional to print indexes  - cout << " " << i ;
         firstIndex = FirstIndexOfNumberShownMultiple(tempArray,size,tempArray[i], i);
         
         if (firstIndex != -1){
@@ -65,6 +65,7 @@ int countIterationOfCurledArray(int arr[], int size){
             
         counter++;
     }
+    /* optional to print array after curl
     cout << endl;
     for (int i = 0; i < size; i++)
     {
@@ -72,6 +73,7 @@ int countIterationOfCurledArray(int arr[], int size){
     }
 
     cout << endl;
+    */
     
     return counter;
 

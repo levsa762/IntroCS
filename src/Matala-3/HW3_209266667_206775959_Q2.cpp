@@ -25,7 +25,7 @@ void longestSection(int A[], int size) {
     int maxLongestLength = 0, tempMaxLongestNum = 0, maxLongestFirstIndex;
 
     for (int i = 0, isFoundLongestNum = false; i < size -1; i++) {
-        if ((A[i] > 0) && (A[i+1] > 0) && A[i] < A[i+1]) {
+        if ((A[i] > 0) && (A[i+1] > 0)) {
             if (!isFoundLongestNum) {
                 maxLongestFirstIndex = i;
                 isFoundLongestNum = true;

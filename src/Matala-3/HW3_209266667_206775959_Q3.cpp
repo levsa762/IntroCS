@@ -6,7 +6,7 @@ using namespace std;
 
 #define SIZE 10
 
-/* function that finds if value is in array more then once(looping until index equals index of the value) and returns the first index of the value if it 
+/* function that finds if value is in array more then once(looping until index equals index of the value) and returns the first index of the value if it
 true , if not it will return -1
 */
 

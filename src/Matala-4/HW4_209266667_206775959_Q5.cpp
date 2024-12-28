@@ -8,17 +8,26 @@
 
 using namespace std;
 
+
+// Splits sentance to an array of words and returns how much words in this array - not including the dot
 int splitSentenceReturnCountWords(char sentence[], char result[][N]) {
     int len = strlen(sentence);
     int row = 0, col = 0;
 
+    // Check if the last character is a dot, and replace it with \0
+    if (sentence[len - 1] == '.') {
+        sentence[len - 1] = '\0';
+        len--; // Decrease the length by 1 to not include the dot in processing
+    }
+    // do the split, after every word put \0 to split.
     for (int i = 0; i <= len; i++) {
         if (sentence[i] == ' ' || sentence[i] == '\0') {
-            result[row][col] = '\0'; // Null-terminate the word
-            row++;                   // Move to the next word
-            col = 0;                 // Reset column index
+            result[row][col] = '\0'; 
+            row++;                   
+            col = 0;                 
         } else {
-            result[row][col++] = sentence[i];
+            result[row][col] = sentence[i];
+            col++;
         }
     }
 
@@ -46,15 +55,18 @@ void rearrangeOnVowel(const char input[], char output[]) {
     // Rearrange the word if a vowel was found
     if (firstVowelIndex != -1) {
         for (int i = firstVowelIndex; i < len; i++) {
-            output[index++] = input[i];
+            output[index] = input[i];
+            index++;
         }
         for (int i = 0; i < firstVowelIndex; i++) {
-            output[index++] = input[i];
+            output[index] = input[i];
+            index++;
         }
     } else {
         // Copy the word as is if no vowel is found
         for (int i = 0; i < len; i++) {
-            output[index++] = input[i];
+            output[index] = input[i];
+            index++;
         }
     }
 
@@ -63,8 +75,8 @@ void rearrangeOnVowel(const char input[], char output[]) {
 
 // Function to convert a sentence to Pig Latin
 void PigLatin(char sentence[]) {
-    char tempArray[N][N];    // To hold the split words
-    char output[N];          // To store the Pig Latin word
+    char tempArray[N][N];    
+    char output[N];          
     const char waySuffix[] = "way";
     const char aySuffix[] = "ay";
 
@@ -85,23 +97,29 @@ void PigLatin(char sentence[]) {
     }
 
     // Print the Pig Latin sentence
+    cout << "output: ";
     for (int i = 0; i < wordCount; i++) {
         if (i > 0) cout << " ";
         cout << tempArray[i];
     }
+    //Adding the dot which removed from the last word 
+    cout << '.';
     cout << endl;
 }
 
+
+// Adding b and a vowel after discover vowel in the word - ex : ub - ubub
 void Blang(char c []){
     char tempSentence[N] = "\0";
-    int length = strlen(c);
-    char tempSumChars[4] = "lb";
-    int index = 0;
-    char singleChar[2] = "\0";
-
-    for (int i = 0; i <= length+1; i++)
-    {
-        if(c[i] == 'a' || c[i]== 'i' || c[i]=='u' || c[i]=='o' || c[i]=='e'){
+    int lengthOfSentance = strlen(c);
+    char tempSumChars[4] = "lb"; //template to swap the before b place and add value to the place after  , ex- "ubu\0"
+    int index = 0; // Index for putting \0 when needed to create a word(split to a word)
+    char singleChar[2] = "\0"; // temp array for holding the current iteration value of array
+    
+    //looping through all chars in the string
+    for (int i = 0; i <= lengthOfSentance; i++)
+    {   
+        if(isVowel(c[i])){
             tempSumChars[0] = c[i];
             tempSumChars[2] = c[i];
             strcat(tempSentence, tempSumChars);
@@ -114,20 +132,43 @@ void Blang(char c []){
         }
     }
     tempSentence[index] = '\0';
-    cout << "the word is " <<  tempSentence;
+    cout << "output: " <<  tempSentence << endl;
+}
+
+
+// Initialize new language game with call to this func
+void GameLanguage(){
+    int choice  = 90;
+    char arr[N];
+    while (choice != 0)
+    {
+        cout << "Please choose: " << endl << "1: Pig-Latin" << endl << "2: B-Language" << endl << "0: Finish" << endl;
+        cin >> choice ;
+        cin.ignore();
+        cout << endl;
+        //Menu of the game
+        switch (choice)
+        {
+        case 0:
+            break;
+        case 1:
+            cout << "Please enter a sentance" << endl;
+            cin.getline(arr,N);
+            PigLatin(arr);
+            break;
+        case 2:
+            cout << "Please enter a sentance" << endl;
+            cin.getline(arr,N);
+            Blang(arr);
+            break;
+        
+        default:
+            cout << "you did not choose number from the list , to get out press 0";
+            break;
+        }
+    }
 }
 
 int main(){
-
-    char co[] = "hello trash";
-    char coTemo[N][N] ;
-    //Blang(co);
-    /*
-    int words_count = splitSentence(co,coTemo);
-    cout << "Words in the sentence:" << endl;
-    for (int i = 0; i < words_count; i++) {
-        cout << coTemo[i] << endl;
-    }
-    */
-   PigLatin(co);
+   GameLanguage();
 }

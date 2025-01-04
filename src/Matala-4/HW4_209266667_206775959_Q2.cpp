@@ -38,8 +38,8 @@ int bSearch(int arr[], int size, int value) {
     int mid = (low + high) / 2; // Midpoint index
 
     // Sort the array in descending order
-    // Since we cannot assume the input array is pre-sorted
-    reverseBubbleSort(arr, size);
+    // Since we cannot assume the input array is pre-sorted - optional
+    //reverseBubbleSort(arr, size);
 
     // Perform binary search
     while (low >= high) { // Continue until the search space is exhausted

@@ -20,9 +20,17 @@ int mapSequences(char strMat[][COL], int rows) {
         }
 
         for (int j = 0; strMat[i][j] != '\0'; j++) {
+            if (strMat[i][j] != '0' && strMat[i][j]!= '1')
+            {
+                cout << "You can not put non binary number, please fix it";
+                return -1;
+            }
             if (j == 0 || strMat[i][j] == strMat[i][j - 1]) {
                 count++; // Increment the count for the current sequence
-            } else {
+            }
+
+            
+             else {
                 // Add the count of the previous sequence to the array
                 tempArray[indexTemp] = count + '0';
                 indexTemp++;
@@ -48,7 +56,7 @@ int mapSequences(char strMat[][COL], int rows) {
 }
 
 int main() {
-    char co[SIZE][COL] = {"0000000", "10101", "11000001"};
+    char co[SIZE][COL] = {"011", "10111", "110000012"};
 
     // Call the function and print the maximum number of sequences
     int maxSequences = mapSequences(co, SIZE);

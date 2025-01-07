@@ -44,7 +44,7 @@ int main() {
 
     cout << "Occurrences of \"" << t2 << "\" in \"" << s2 << "\": " << mystr(s2, t2) << endl;
 
-    char s3[] = "bbbb";
+    char s3[] = "boggobboogb";
     char t3[] = "bb";
 
     cout << "Occurrences of \"" << t3 << "\" in \"" << s3 << "\": " << mystr(s3, t3) << endl;

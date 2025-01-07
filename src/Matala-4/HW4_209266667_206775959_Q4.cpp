@@ -36,7 +36,7 @@ void printDecrypted(char encriptedStr[]) {
 }
 
 int main() {
-    char c[50] = "3y!!roe$&hT+* -regnaB gi#B eh@%^T tseb";
+    char c[50] = " 03y!!roe$&hT+* -regnaB gi#B eh@%^T tseb";
     printDecrypted(c);
     cout << endl;
     return 0;

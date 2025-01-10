@@ -15,17 +15,17 @@ int main(){
 }
 
 int mapSequences(char strMat[][SIZE], int rows) {
-    int maxSequence = 0, sequence, tempArrIndex;
-    char currentChar, tempArr[ROWS][SIZE] = {0};
+    int maxSequence = 0, sequence, tempStrIndex;
+    char currentChar, tempStr[SIZE];
 
     for (int i = 0; i < rows; i++) {
-        tempArrIndex = 0;
+        tempStrIndex = 0;
         sequence = 1;
         currentChar = strMat[i][0];
 
         if (strMat[i][0] != '1') {
-            tempArr[i][tempArrIndex] = '0';
-            tempArrIndex++;
+            tempStr[tempStrIndex] = '0';
+            tempStrIndex++;
         }
 
         for (int j = 1; strMat[i][j] != '\0' ; j++) {
@@ -33,8 +33,8 @@ int mapSequences(char strMat[][SIZE], int rows) {
                 sequence++;
             }
             else {
-                tempArr[i][tempArrIndex] = sequence + '0';
-                tempArrIndex++;
+                tempStr[tempStrIndex] = sequence + '0';
+                tempStrIndex++;
 
                 if (sequence > maxSequence) {
                     maxSequence = sequence;
@@ -45,10 +45,10 @@ int mapSequences(char strMat[][SIZE], int rows) {
             }
         }
 
-        tempArr[i][tempArrIndex] = sequence + '0';
-        tempArrIndex++;
-        tempArr[i][tempArrIndex] = '\0';
-        cout << tempArr[i] << endl;
+        tempStr[tempStrIndex] = sequence + '0';
+        tempStrIndex++;
+        tempStr[tempStrIndex] = '\0';
+        cout << tempStr << endl;
     }
 
     return maxSequence;

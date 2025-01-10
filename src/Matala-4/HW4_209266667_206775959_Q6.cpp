@@ -6,23 +6,17 @@ using namespace std;
 
 const int ROWS = 3, SIZE = 100;
 
-int mapSequences(char strMat[][SIZE], int rows, char tempArr[][SIZE]);
+int mapSequences(char strMat[][SIZE], int rows);
 
 int main(){
-    char arr[ROWS][SIZE] = {"0000000", "10101", "11000001"}, tempArr[ROWS][SIZE] = {0};;
+    char arr[ROWS][SIZE] = {"0000000", "10101", "11000001"};
 
-    int maxSequence = mapSequences(arr, ROWS, tempArr);
-
-    for (int i = 0; i < ROWS; i++) {
-        cout << tempArr[i] << endl;
-    }
-
-    cout << "Max sequence is: " << maxSequence << endl;
+    cout << mapSequences(arr, ROWS) << endl;
 }
 
-int mapSequences(char strMat[][SIZE], int rows, char tempArr[][SIZE]) {
+int mapSequences(char strMat[][SIZE], int rows) {
     int maxSequence = 0, sequence, tempArrIndex;
-    char currentChar;
+    char currentChar, tempArr[ROWS][SIZE] = {0};
 
     for (int i = 0; i < rows; i++) {
         tempArrIndex = 0;
@@ -53,11 +47,8 @@ int mapSequences(char strMat[][SIZE], int rows, char tempArr[][SIZE]) {
 
         tempArr[i][tempArrIndex] = sequence + '0';
         tempArrIndex++;
-        if (sequence > maxSequence) {
-            maxSequence = sequence;
-        }
-
         tempArr[i][tempArrIndex] = '\0';
+        cout << tempArr[i] << endl;
     }
 
     return maxSequence;

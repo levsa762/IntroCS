@@ -5,28 +5,28 @@
 using namespace std;
 #include <cstring>
 
-#define MAXSIZE 10
+#define MAXSIZE 100  // Increase the size to handle larger team names
 
 // Converts a score string to a numerical value
-int scoreToNumber(char arr []){
+int scoreToNumber(char arr[]) {
     int sum = 0;
     while (*arr)
     {
         if (*arr == 'w')
         {
-            sum+=3;
+            sum += 3;
         }
         else if (*arr == 'd')
         {
-            sum+=1;
+            sum += 1;
         }
-        arr++; 
+        arr++;
     }
     return sum;
 }
 
 // Calculates scores and sorts teams based on their scores
-void calcAndSort(char** Teams, char** Scores, int n, char** sortedTeams, int* sortedScores){
+void calcAndSort(char** Teams, char** Scores, int n, char** sortedTeams, int* sortedScores) {
     // Calculate scores
     for (int i = 0; i < n; i++)
     {
@@ -35,38 +35,38 @@ void calcAndSort(char** Teams, char** Scores, int n, char** sortedTeams, int* so
     // Copy team names
     for (int i = 0; i < n; i++)
     {
-        strcpy(sortedTeams[i], Teams[i]);
+        strcpy_s(sortedTeams[i], MAXSIZE, Teams[i]);
     }
-    char tempc[MAXSIZE] = {};
+    char tempc[MAXSIZE] = {};  // Ensure the size matches the team names
     int tempnum = 0;
 
     // Sort teams and scores in descending order
     for (int j = 0; j < n; j++)
     {
-        for (int i = 0; i < n-j-1; i++)
+        for (int i = 0; i < n - j - 1; i++)
         {
-            if (sortedScores[i] < sortedScores[i+1])
+            if (sortedScores[i] < sortedScores[i + 1])
             {
-                tempnum = sortedScores[i+1];
-                sortedScores[i+1] = sortedScores[i];
+                tempnum = sortedScores[i + 1];
+                sortedScores[i + 1] = sortedScores[i];
                 sortedScores[i] = tempnum;
 
-                strcpy(tempc, sortedTeams[i+1]);
-                strcpy(sortedTeams[i+1], sortedTeams[i]);
-                strcpy(sortedTeams[i], tempc);
-            }   
-        }   
+                strcpy_s(tempc, MAXSIZE, sortedTeams[i + 1]);
+                strcpy_s(sortedTeams[i + 1], MAXSIZE, sortedTeams[i]);
+                strcpy_s(sortedTeams[i], MAXSIZE, tempc);
+            }
+        }
     }
 }
 
-int main(){
+int main() {
     cout << "Enter number of teams: " << endl;
     int N;
     cin >> N;
     cin.ignore(); // Ignore the newline character left in the buffer
 
-    char** teamsArray = new char*[N];
-    char** scoresArray = new char*[N];
+    char** teamsArray = new char* [N];
+    char** scoresArray = new char* [N];
     for (int i = 0; i < N; i++) {
         teamsArray[i] = new char[MAXSIZE];
         scoresArray[i] = new char[MAXSIZE];
@@ -79,8 +79,8 @@ int main(){
         cin >> scoresArray[i];
     }
 
-    int sortedScores[N];
-    char** sortedTeams = new char*[N];
+    int * sortedScores = new int[N];
+    char** sortedTeams = new char* [N];
     for (int i = 0; i < N; ++i) {
         sortedTeams[i] = new char[MAXSIZE];
     }
@@ -99,6 +99,7 @@ int main(){
         delete[] scoresArray[i];
         delete[] sortedTeams[i];
     }
+    delete[] sortedScores;
     delete[] teamsArray;
     delete[] scoresArray;
     delete[] sortedTeams;

@@ -22,10 +22,11 @@ int splitSentenceReturnCountWords(char sentence[], char result[][N]) {
     // do the split, after every word put \0 to split.
     for (int i = 0; i <= len; i++) {
         if (sentence[i] == ' ' || sentence[i] == '\0') {
-            result[row][col] = '\0'; 
-            row++;                   
-            col = 0;                 
-        } else {
+            result[row][col] = '\0';
+            row++;
+            col = 0;
+        }
+        else {
             result[row][col] = sentence[i];
             col++;
         }
@@ -62,7 +63,8 @@ void rearrangeOnVowel(const char input[], char output[]) {
             output[index] = input[i];
             index++;
         }
-    } else {
+    }
+    else {
         // Copy the word as is if no vowel is found
         for (int i = 0; i < len; i++) {
             output[index] = input[i];
@@ -75,8 +77,8 @@ void rearrangeOnVowel(const char input[], char output[]) {
 
 // Function to convert a sentence to Pig Latin
 void PigLatin(char sentence[]) {
-    char tempArray[N][N];    
-    char output[N];          
+    char tempArray[N][N];
+    char output[N];
     const char waySuffix[] = "way";
     const char aySuffix[] = "ay";
 
@@ -87,12 +89,13 @@ void PigLatin(char sentence[]) {
     for (int i = 0; i < wordCount; i++) {
         if (isVowel(tempArray[i][0])) {
             // If the word starts with a vowel, add "way"
-            strcat(tempArray[i], waySuffix);
-        } else {
+            strcat_s(tempArray[i],100, waySuffix);
+        }
+        else {
             // Rearrange the word and add "ay"
             rearrangeOnVowel(tempArray[i], output);
-            strcat(output, aySuffix);
-            strcpy(tempArray[i], output); // Copy back to tempArray
+            strcat_s(output,100, aySuffix);
+            strcpy_s(tempArray[i],100, output); // Copy back to tempArray
         }
     }
 
@@ -109,41 +112,52 @@ void PigLatin(char sentence[]) {
 
 
 // Adding b and a vowel after discover vowel in the word - ex : ub - ubub
-void Blang(char c []){
+void Blang(char c[]) {
     char tempSentence[N] = "\0";
     int lengthOfSentance = strlen(c);
     char tempSumChars[4] = "lb"; //template to swap the before b place and add value to the place after  , ex- "ubu\0"
     int index = 0; // Index for putting \0 when needed to create a word(split to a word)
     char singleChar[2] = "\0"; // temp array for holding the current iteration value of array
-    
+
     //looping through all chars in the string
     for (int i = 0; i <= lengthOfSentance; i++)
-    {   
-        if(isVowel(c[i])){
+    {
+        if (isVowel(c[i])) {
             tempSumChars[0] = c[i];
             tempSumChars[2] = c[i];
-            strcat(tempSentence, tempSumChars);
-            index+=3;
+            strcat_s(tempSentence,100, tempSumChars);
+            index += 3;
         }
-        else{
-            singleChar[0] = c[i]; 
-            strcat(tempSentence, singleChar);
+        else {
+            singleChar[0] = c[i];
+            strcat_s(tempSentence,100, singleChar);
             index++;
         }
     }
     tempSentence[index] = '\0';
-    cout << "output: " <<  tempSentence << endl;
+    cout << "output: " << tempSentence << endl;
 }
 
+// Function to reverse a string
+void reverseString(char str[]) {
+    int len = strlen(str);
+    char temp[100];  // Use a static array with a fixed size
+    int index = 0;
+    for (int i = len - 1; i >= 0; i--, index++) {
+        temp[index] = str[i];
+    }
+    temp[index] = '\0';   // end the string when needed
+    strcpy_s(str, 100, temp);  // Copy the reversed string back to the original
+}
 
 // Initialize new language game with call to this func
-void GameLanguage(){
-    int choice  = 90;
+void GameLanguage() {
+    int choice = 90;
     char arr[N];
     while (choice != 0)
     {
         cout << "Please choose: " << endl << "1: Pig-Latin" << endl << "2: B-Language" << endl << "0: Finish" << endl;
-        cin >> choice ;
+        cin >> choice;
         cin.ignore();
         cout << endl;
         //Menu of the game
@@ -153,15 +167,15 @@ void GameLanguage(){
             break;
         case 1:
             cout << "Please enter a sentance" << endl;
-            cin.getline(arr,N);
+            cin.getline(arr, N);
             PigLatin(arr);
             break;
         case 2:
             cout << "Please enter a sentance" << endl;
-            cin.getline(arr,N);
+            cin.getline(arr, N);
             Blang(arr);
             break;
-        
+
         default:
             cout << "you did not choose number from the list , to get out press 0";
             break;
@@ -169,6 +183,6 @@ void GameLanguage(){
     }
 }
 
-int main(){
-   GameLanguage();
+int main() {
+    GameLanguage();
 }

@@ -3,40 +3,39 @@
 using namespace std;
 
 
-// function that takes string, reverse it to temp string and then copy to original
+// function that takes string, reverse it !
 
 void reverseString(char str[]) {
     int len = strlen(str);
-    char temp[len + 1];  
-    int index = 0;
-    for (int i = len - 1; i >= 0; i--, index++) {
-        temp[index] = str[i];
+    for (int i = 0; i < len / 2; i++) {
+        char temp = str[i];
+        str[i] = str[len - 1 - i];
+        str[len - 1 - i] = temp;
     }
-    temp[index] = '\0';   // end the string when needed
-    strcpy(str, temp);  // Copy the reversed string back to the original
 }
 
 
 void printDecrypted(char encriptedStr[]) {
     int lengthStr = strlen(encriptedStr);
-    char temp[lengthStr + 1];  // +1 for the end ('\0')
     int indexTemp = 0;
-    bool islastLetter = false;
 
-    // Extract alphabetic characters only 
+    // Extract alphabetic characters only and reverse in place
     for (int i = 0; i < lengthStr; i++) {
-        if ((encriptedStr[i] >= 'A' && encriptedStr[i] <= 'Z') || (encriptedStr[i] >= 'a' && encriptedStr[i] <= 'z') || encriptedStr[i] >='0' && encriptedStr[i] <='9') {
-            temp[indexTemp] = encriptedStr[i];
+        if ((encriptedStr[i] >= 'A' && encriptedStr[i] <= 'Z') || (encriptedStr[i] >= 'a' && encriptedStr[i] <= 'z') || encriptedStr[i] >= '0' && encriptedStr[i] <= '9') {
+            encriptedStr[indexTemp] = encriptedStr[i];
             indexTemp++;
         }
     }
-    temp[indexTemp] = '\0';  // end the string when needed
-    reverseString(temp); // reverse the string
-    cout << temp;
+    encriptedStr[indexTemp] = '\0';  // end the string when needed
+
+    // Reverse the string in place
+    reverseString(encriptedStr);
+
+    cout << encriptedStr;
 }
 
 int main() {
-    char c[50] = " 03y!!roe$&hT+* -regnaB gi#B eh@%^T tseb";
+    char c[50] = " 03y!!roe$&hT+* -regnaB gi#B eh@%^T tseb45";
     printDecrypted(c);
     cout << endl;
     return 0;

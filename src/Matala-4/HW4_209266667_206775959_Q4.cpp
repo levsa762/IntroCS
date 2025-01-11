@@ -25,7 +25,7 @@ void printDecrypted(char encriptedStr[]) {
 
     // Extract alphabetic characters only 
     for (int i = 0; i < lengthStr; i++) {
-        if ((encriptedStr[i] >= 'A' && encriptedStr[i] <= 'Z') || (encriptedStr[i] >= 'a' && encriptedStr[i] <= 'z')) {
+        if ((encriptedStr[i] >= 'A' && encriptedStr[i] <= 'Z') || (encriptedStr[i] >= 'a' && encriptedStr[i] <= 'z') || encriptedStr[i] >='0' && encriptedStr[i] <='9') {
             temp[indexTemp] = encriptedStr[i];
             indexTemp++;
         }

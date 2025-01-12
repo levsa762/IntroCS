@@ -1,53 +1,42 @@
-// Name: Lev Sakaju; ID: 209266667
-// Name: Aviv Raz; ID: 206775959
-
 #include <iostream>
+#include <string.h> 
 using namespace std;
 
-void printDecrypted(char encriptedStr[]);
-void reverseString(char str[]);
 
-int main(){
-    char str[] = "3y!!roe$&hT+* -gnaB gi#B eh@T";
-
-    printDecrypted(str);
-}
-
-void printDecrypted(char encriptedStr[]) {
-    int indexStrS = 0, indexStrD = 0;
-    char strTemp[strlen(encriptedStr) + 1];
-
-    cout << encriptedStr << endl;
-    while (encriptedStr[indexStrS] != '\0') {
-        if (encriptedStr[indexStrS] >= '0' && encriptedStr[indexStrS] <= '9') {
-            strTemp[indexStrD] = encriptedStr[indexStrS];
-            indexStrD++;
-        }
-
-        if (encriptedStr[indexStrS] >= 'a' && encriptedStr[indexStrS] <= 'z') {
-            strTemp[indexStrD] = encriptedStr[indexStrS];
-            indexStrD++;
-        }
-
-        if (encriptedStr[indexStrS] >= 'A' && encriptedStr[indexStrS] <= 'Z') {
-            strTemp[indexStrD] = encriptedStr[indexStrS];
-            indexStrD++;
-        }
-
-        indexStrS++;
-    }
-
-    strTemp[indexStrD] = '\0';
-    reverseString(strTemp);
-    cout << strTemp << endl;
-}
+// function that takes string, reverse it !
 
 void reverseString(char str[]) {
-    char temp;
-
-    for (int i = 0; i < (strlen(str) - 1) / 2; i++) {
-        temp = str[i];
-        str[i] = str[strlen(str) - 1 - i];
-        str[strlen(str) - 1 - i] = temp;
+    int len = strlen(str);
+    for (int i = 0; i < len / 2; i++) {
+        char temp = str[i];
+        str[i] = str[len - 1 - i];
+        str[len - 1 - i] = temp;
     }
+}
+
+
+void printDecrypted(char encriptedStr[]) {
+    int lengthStr = strlen(encriptedStr);
+    int indexTemp = 0;
+
+    // Extract alphabetic characters only and reverse in place
+    for (int i = 0; i < lengthStr; i++) {
+        if ((encriptedStr[i] >= 'A' && encriptedStr[i] <= 'Z') || (encriptedStr[i] >= 'a' && encriptedStr[i] <= 'z') || encriptedStr[i] >= '0' && encriptedStr[i] <= '9') {
+            encriptedStr[indexTemp] = encriptedStr[i];
+            indexTemp++;
+        }
+    }
+    encriptedStr[indexTemp] = '\0';  // end the string when needed
+
+    // Reverse the string in place
+    reverseString(encriptedStr);
+
+    cout << encriptedStr;
+}
+
+int main() {
+    char c[50] = " 03y!!roe$&hT+* -regnaB gi#B eh@%^T tseb45";
+    printDecrypted(c);
+    cout << endl;
+    return 0;
 }

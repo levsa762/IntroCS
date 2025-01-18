@@ -70,7 +70,7 @@ bool ListsEqual(Node* list1, Node* list2) {
 bool mirror(Node* list1, Node* list2) {
     Node* reversedList2 = reverseListWithoutModifying(list2);
     bool result = ListsEqual(list1, reversedList2);
-    deleteList(reversedList2); // Clean up the temporary reversed list
+    deleteList(reversedList2); // delete temporary reversed list
     return result;
 }
 
@@ -131,7 +131,7 @@ int main() {
         cout << "The lists are not mirrors of each other." << endl;
     }
 
-    // Delete the linked lists to free memory
+    // Delete the linked lists 
     deleteList(list1);
     deleteList(list2);
     deleteList(list3);

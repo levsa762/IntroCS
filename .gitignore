@@ -14,7 +14,7 @@
 *.lib
 *.exe
 *.DS_Store
-
+*.zip
 # Ignore CMake generated files
 CMakeFiles/
 /CMakeCache.txt

@@ -24,6 +24,102 @@ int Sum(int num1, int num2){
     return num2 + Sum(num1,num2-1);
 }
 
+int countDig(int num){
+    if (num == 0)
+    {
+        return 0;
+    }
+    return 1 + countDig(num/10);
+}
+
+void reversedPrint(int num){
+    if (num == 0)
+    {
+        return;
+    }
+    cout << num %10;
+    return reversedPrint(num / 10);
+}
+
+///////////////////////////////////
+
+void printIncreasing(int n) {
+    if (n == 0){
+        return;
+    } 
+    printIncreasing(n - 1);
+    cout << n;
+}
+
+void printDecreasing(int n) {
+    if (n == 0){
+        return;
+    } 
+    cout << n;
+    printDecreasing(n - 1);
+}
+
+void printPatternUptoDown(int n) {
+    if (n == 0){
+        return;
+    } 
+    printPatternUptoDown(n - 1);
+    printIncreasing(n);
+    printDecreasing(n - 1);
+    cout << endl;
+}
+
+void printSpace(int num){
+    if (num == 0)
+    {
+        return;
+    }
+    cout << " "; 
+    return printSpace(num -1);
+}
+
+void printTreePattren(int n , int max){
+    if (n == 0){
+        return;
+    }
+    printTreePattren(n - 1, max);
+    printSpace(max- (n-1));
+    printIncreasing(n);
+    printDecreasing(n - 1);
+    cout << endl;
+}
+
+void printTree(int n){
+    printTreePattren(n,n);
+}
+
+
+int findLongestSequenceHelper(int num, int prevDigit, int currentCount, int maxCount) {
+    if (num == 0){
+        return maxCount;
+    } 
+
+    if (num % 10 == prevDigit) {
+        currentCount++;
+    } else {
+        currentCount = 1;
+    }
+
+    if (currentCount > maxCount) {
+        maxCount = currentCount;
+    }
+    return findLongestSequenceHelper(num / 10, num % 10, currentCount, maxCount);
+}
+
+int findLongestSequence(int num) {
+    if (num == 0){
+        return 0;
+    }  
+    return findLongestSequenceHelper(num / 10, num % 10, num / num, num / num);
+}
+
+////////////////////
+
 void printMenu(){
         int choice;
         do {
@@ -53,8 +149,48 @@ void printMenu(){
             cin >> num2;
             cout << endl;
             cout << "The reults : "<< Sum(num1,num2) << endl;
-            
-        
+            break;
+        case 3:
+            cout << " Enter a number " << endl;
+            int num;
+            cin >> num;
+            cout << endl;
+            cout << "The count digits : " << countDig(num) << endl;
+            break;
+        case 4:
+            cout << " Enter a number " << endl;
+            int revNum;
+            cin >> revNum;
+            cout << endl;
+            cout << "The reversed num is : ";
+            reversedPrint(revNum);
+            break;
+        case 5:
+            cout << " Enter a number " << endl;
+            int pattNum1;
+            cin >> pattNum1;
+            cout << endl;
+            cout << "The pattern is : " << endl;
+            printPatternUptoDown(pattNum1);
+            break;
+        case 6:
+            cout << " Enter a number " << endl;
+            int pattNum2;
+            cin >> pattNum2;
+            cout << endl;
+            cout << "The pattern is : " << endl;
+            printTree(pattNum2);
+            break;
+        case 7:
+            cout << " Enter a number " << endl;
+            int seqNum;
+            cin >> seqNum;
+            cout << endl;
+            cout << "The logest amount of sequence is : " << findLongestSequence(seqNum) << endl;
+            break;
+        case 8:
+            cout << " GoodBye !";
+            break;
         default:
             break;
         }

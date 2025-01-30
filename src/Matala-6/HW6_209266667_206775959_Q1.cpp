@@ -115,8 +115,8 @@ int power(int x, int y) {
 
 // Recursive function to calculate the sum of numbers from num1 to num2.
 int Sum(int num1, int num2) {
-    if (num1 > num2) {
-        return 0; // Base case: stop when num1 exceeds num2.
+    if (num1 == num2) {
+        return num1; // Base case: stop when num1 exceeds num2.
     }
 
     return num1 + Sum(num1 + 1, num2);

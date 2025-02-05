@@ -13,6 +13,7 @@ void printReverseNum(int num);
 void printRightAngledTriangle(int n);
 void printAscendingOfNum(int n, int digit);
 void printDescendingOfNum(int n, int digit);
+void printIsoscelesTrianglePattren(int n, int max);
 void printIsoscelesTriangle(int n);
 void printSpaceByNum(int n);
 int maxSeqInNum(int num);
@@ -176,18 +177,20 @@ void printDescendingOfNum(int n, int digit) {
     cout << digit; // Print the current digit.
 }
 
-void printIsoscelesTriangle(int n) {
+void printIsoscelesTrianglePattren(int n, int max) {
     if (n == 0) {
         return;
     }
 
-    static int maxN = n;  // Keep track of the initial value of n to calculate spaces
-
-    printIsoscelesTriangle(n - 1);  // Recursively print the upper rows of the triangle
-    printSpaceByNum(maxN - n);  // Print the leading spaces for the current row
+    printIsoscelesTrianglePattren(n - 1, max);  // Recursively print the upper rows of the triangle
+    printSpaceByNum(max - n);  // Print the leading spaces for the current row
     printAscendingOfNum(n, 1);  // Print ascending numbers for the current row
     printDescendingOfNum(n - 1, 1);  // Print descending numbers after the ascending part
     cout << endl;  // Move to the next line after printing the current row
+}
+
+void printIsoscelesTriangle(int n) {
+    printIsoscelesTrianglePattren(n, n);
 }
 
 void printSpaceByNum(int n) {
